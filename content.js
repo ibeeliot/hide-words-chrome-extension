@@ -5,7 +5,8 @@ for (let i = 0; i < elts.length; i++) {
 }
 
 // this is for USER input
-const arrayOfWords = ['You', 'New'];
+const arrayOfWords = ['You', 'New', 'While', 'CNN'];
+console.log(arrayOfWords);
 
 // declare const to enact addEventHandler to submit type input to handle data of user-iput
 // const userSubmit = document.querySelector('#user-submit');
