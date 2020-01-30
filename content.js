@@ -4,16 +4,21 @@ for (let i = 0; i < elts.length; i++) {
     elts[i].style['background-color'] = '#F0C';
 }
 
-// this is for USER input
-const arrayOfWords = ['You', 'New', 'While', 'CNN'];
-console.log(arrayOfWords);
 
-// declare const to enact addEventHandler to submit type input to handle data of user-iput
-// const userSubmit = document.querySelector('#user-submit');
-// console.log(userSubmit);
+// creating local storage via content
+
+
+
+// this is for USER input
+const arrayOfWords = ['You', 'New', 'While', 'United'];
+
+// // declare const to enact addEventHandler to submit type input to handle data of user-iput
+const userSubmit = document.getElementById("user-submit");
+console.log('This is userSubmit', userSubmit);
 
 // // declare const to grab id of user-input
-// const userInput = document.querySelector('#user-input');
+const userInput = document.querySelector('#user-input');
+console.log('This is userInput', userInput);
 
 // // added event listener for when user clicks submits
 // userSubmit.addEventListener('submit', e => {
@@ -28,6 +33,9 @@ console.log(arrayOfWords);
 //     userInput.value = '';
 // });
 
+/* grab user data and then bring into the column*/
+
+
 const deleteStuff = () => {
     // this will grab all paragraph tags on the page and stored it in an elements array
     const pOnPage = Array.from(document.querySelectorAll('p'));
@@ -35,6 +43,8 @@ const deleteStuff = () => {
     // const psWithMatchingText = pOnPage.filter(el => el.textContent.includes('You'));
     const psWithMatchingText = [];
 
+
+    // Loops through ArrayOfWords & pOnPage to see if the pOnPage array matches with anything from  arrayOfWords 
     for (let i = 0; i < pOnPage.length; i++) {
         for (let j = 0; j < arrayOfWords.length; j++) {
             const newLowerCased = pOnPage[i].textContent.toLowerCase();
@@ -77,5 +87,4 @@ const deleteStuff = () => {
     //   }
     // }
 };
-
 deleteStuff();

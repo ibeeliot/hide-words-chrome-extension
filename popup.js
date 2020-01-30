@@ -21,6 +21,13 @@ const changeColor = document.getElementById('changeColor');
 // }
 // };
 
+
+// TEST
+// const arrayOfWords = ['You', 'New', 'While', 'United', 'CNN'];
+
+
+// console.log('this is array of words', arrayOfWords)
+
 chrome.storage.sync.get('color', function(data) {
     changeColor.style.backgroundColor = data.color;
     changeColor.setAttribute('value', data.color);
@@ -36,27 +43,41 @@ changeColor.onclick = function(element) {
     });
 };
 
+// const userSubmit = document.querySelector('#user-submit');
+// console.log('this is userSubmit', userSubmit);
+
+// // console.log(3);
+
+// // declare const to grab id of user-input
+// const userInput = document.querySelector('#user-input').value;
+// console.log('this is userSubmit', userInput);
+
 // grab input from user, and send to content.js
 // arrayOfWords.push(somethinggoeshere)
 
 const userSubmit = document.querySelector('#user-submit');
-// console.log(userSubmit);
+// // console.log(userSubmit);
+// console.log('This is local storage:', localStorageTest);
 
-console.log('this is testing ARRAY fro content.js', arrayofWords);
-// console.log(3);
+// console.log('this is testing ARRAY fro content.js', arrayofWords);
+// // console.log(3);
 
-// declare const to grab id of user-input
-const userInput = document.querySelector('#user-input');
+// // declare const to grab id of user-input
+const userInput = document.querySelector('#user-input').value;
 
-// added event listener for when user clicks submits
-userSubmit.addEventListener('submit', e => {
+// // added event listener for when user clicks submits
+userSubmit.addEventListener('submit', (e) => {
     e.preventDefault();
-    arrayOfWords.push(userInput.value);
+    alert("hey");
+    arrayOfWords.push(userInput);
     userInput.value = '';
 });
 
-userInput.addEventListener('submit', e => {
+userInput.addEventListener('submit', (e) => {
     e.preventDefault();
-    arrayOfWords.push(userInput.value);
+    alert("hey2");
+    arrayOfWords.push(userInput);
     userInput.value = '';
 });
+
+/**/
