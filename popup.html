@@ -4,10 +4,11 @@
         <style>
             body {
                 background-color: green;
-                width: 10rem;
+                width: 15rem;
             }
             intput:nth-child(1) {
-                width: 80px;
+                /* this needs to be modified -- cannot set width of an input element? */
+                min-width: 15rem;
             }
 
             input:nth-child(2) {
@@ -21,8 +22,13 @@
         <!--this is original changeColor-->
         <!--<button id="changeColor"></button> -->
 
-        <input id="user-input" type="text" placeholder="Enter a word you want block" />
-        <input id="user-submit" type="submit" placeholder="this is new SUBMIT" />
+        <form action="#" class="word-grabber">
+            <input id="user-input" type="text" placeholder="Enter a word you want block" />
+            <input id="user-submit" type="submit" placeholder="this is new SUBMIT" />
+            <button type="submit">Click here to un-censor a word</button>
+        </form>
+        <!-- user input has odd behavior if content is placed above it??? -->
+        <h2>Censorshit -- censor some shit you're tired of seeing!</h2>
         <script src="content.js"></script>
         <script src="popup.js"></script>
     </body>

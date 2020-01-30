@@ -1,3 +1,18 @@
+let receivedText;
+// chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+//     receivedText = request.greeting;
+//     arrayOfWords.push(receivedText);
+// });
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log(sender.tab ? `from a content script:${sender.tab.url}` : 'from the extension');
+    if (request.greeting) {
+        sendResponse({ farewell: 'goodbye' });
+        arrayOfWords.push(request.greeting);
+        deleteStuff();
+    }
+});
+
 // keep this in for now to ensure file is firing properly
 const elts = document.getElementsByTagName('p');
 for (let i = 0; i < elts.length; i++) {
@@ -5,9 +20,12 @@ for (let i = 0; i < elts.length; i++) {
 }
 
 // this is for USER input
-const arrayOfWords = ['Can', 'New'];
+const arrayOfWords = ['You', 'New'];
 
-const deleteStuff = () => {
+function deleteStuff(message = '', sender, sendResponse) {
+    if (message !== '') {
+        arrayOfWords.push(message);
+    }
     // this will grab all paragraph tags on the page and stored it in an elements array
     const pOnPage = Array.from(document.querySelectorAll('p'));
     // this will search our pOnPage for matching textContent
@@ -44,8 +62,23 @@ const deleteStuff = () => {
     //     // REFACTOR THIS BECAUSE THE .REMOVE METHOD DOESN'T WORK ON SPAN
     //     element.remove();
     // });
-};
+}
 
 deleteStuff();
 
-chrome.runtime.sendMessage({ arrayOfWords });
+// const gotMessage = (message, sender, sendResponse) => {
+//     // message should evaluate to our updated arrayOfWords based on the user input
+//     arrayOfWords.push(message);
+//     deleteStuff();
+// };
+
+// chrome.runtime.onMessage.addListener(gotMessage);
+
+// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+//     console.log(3);
+//     arrayOfWords.push(message);
+//     deleteStuff();
+
+//     console.log(sender.tab ? `from a content script:${sender.tab.url}` : 'from the extension');
+//     if (message) sendResponse({ farewell: 'goodbye' });
+// });
