@@ -1,9 +1,3 @@
-// require('content.js', function() {
-//     console.log(arrayOfWords);
-// })
-
-const changeColor = document.getElementById('changeColor');
-
 // // grabs spans on the page
 // const spanOnPage = Array.from(document.querySelectorAll('span'));
 // // COME BACK TO THIS AND MAYBE SELECT THE PARENT ELEMENT??
@@ -17,18 +11,14 @@ const changeColor = document.getElementById('changeColor');
 // var searchText = "You";
 // var found;
 
-// for (var i = 0; i < pTags.length; i++) {
-//   if (pTags[i].textContent == searchText) {
-//     found = pTags[i];
-//     break;
-//   }
+//     function pushToArray() {
+//         const message = userText;
+//     }
 // }
-// };
 
 
 // TEST
 // const arrayOfWords = ['You', 'New', 'While', 'United', 'CNN'];
-
 
 // console.log('this is array of words', arrayOfWords)
 
