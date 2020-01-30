@@ -1,25 +1,9 @@
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log(sender.tab ? `from a content script:${sender.tab.url}` : 'from the extension');
+    if (request.greeting == 'hello') sendResponse({ farewell: 'goodbye' });
+});
+
 const changeColor = document.getElementById('changeColor');
-
-// // grabs spans on the page
-// const spanOnPage = Array.from(document.querySelectorAll('span'));
-// // COME BACK TO THIS AND MAYBE SELECT THE PARENT ELEMENT??
-// const spanWithMatchingText = spanOnPage.filter(el => el.innerText.includes('You'));
-// spanWithMatchingText.forEach(element => {
-//     // REFACTOR THIS BECAUSE THE .REMOVE METHOD DOESN'T WORK ON SPAN
-//     element.remove();
-// });
-
-// var pTags = document.getElementsByTagName("p");
-// var searchText = "You";
-// var found;
-
-// for (var i = 0; i < pTags.length; i++) {
-//   if (pTags[i].textContent == searchText) {
-//     found = pTags[i];
-//     break;
-//   }
-// }
-// };
 
 chrome.storage.sync.get('color', function(data) {
     changeColor.style.backgroundColor = data.color;
@@ -27,10 +11,8 @@ chrome.storage.sync.get('color', function(data) {
 });
 
 changeColor.onclick = function(element) {
-    // deleteStuff();
     const color = element.target.value;
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        deleteStuff();
         chrome.tabs.executeScript(tabs[0].id, {
             code: `document.body.style.backgroundColor = "${color}";`
         });
@@ -41,10 +23,6 @@ changeColor.onclick = function(element) {
 // arrayOfWords.push(somethinggoeshere)
 
 const userSubmit = document.querySelector('#user-submit');
-// console.log(userSubmit);
-
-console.log('this is testing ARRAY fro content.js', arrayofWords);
-// console.log(3);
 
 // declare const to grab id of user-input
 const userInput = document.querySelector('#user-input');
@@ -60,4 +38,10 @@ userInput.addEventListener('submit', e => {
     e.preventDefault();
     arrayOfWords.push(userInput.value);
     userInput.value = '';
+});
+
+chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { greeting: 'hello' }, function(response) {
+        console.log(response.farewell);
+    });
 });

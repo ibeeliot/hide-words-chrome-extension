@@ -5,27 +5,7 @@ for (let i = 0; i < elts.length; i++) {
 }
 
 // this is for USER input
-const arrayOfWords = ['You', 'New'];
-
-// declare const to enact addEventHandler to submit type input to handle data of user-iput
-// const userSubmit = document.querySelector('#user-submit');
-// console.log(userSubmit);
-
-// // declare const to grab id of user-input
-// const userInput = document.querySelector('#user-input');
-
-// // added event listener for when user clicks submits
-// userSubmit.addEventListener('submit', e => {
-//     e.preventDefault();
-//     arrayOfWords.push(userInput.value);
-//     userInput.value = '';
-// });
-
-// userInput.addEventListener('submit', e => {
-//     e.preventDefault();
-//     arrayOfWords.push(userInput.value);
-//     userInput.value = '';
-// });
+const arrayOfWords = ['Can', 'New'];
 
 const deleteStuff = () => {
     // this will grab all paragraph tags on the page and stored it in an elements array
@@ -64,17 +44,8 @@ const deleteStuff = () => {
     //     // REFACTOR THIS BECAUSE THE .REMOVE METHOD DOESN'T WORK ON SPAN
     //     element.remove();
     // });
-
-    // var pTags = document.getElementsByTagName("p");
-    // var searchText = "You";
-    // var found;
-
-    // for (var i = 0; i < pTags.length; i++) {
-    //   if (pTags[i].textContent == searchText) {
-    //     found = pTags[i];
-    //     break;
-    //   }
-    // }
 };
 
 deleteStuff();
+
+chrome.runtime.sendMessage({ arrayOfWords });
