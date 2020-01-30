@@ -7,7 +7,7 @@
 //     }
 // }
 
-const userSubmit = document.querySelector('#user-submit');
+// const userSubmit = document.querySelector('#user-submit');
 
 // declare const to grab id of user-input
 const userInput = document.querySelector('#user-input');
@@ -50,23 +50,36 @@ const preciseInput = userInput.value;
 // };
 
 // added event listener for when user clicks submits
-userSubmit.addEventListener('submit', e => {
-    // e.preventDefault();
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { greeting: preciseInput }, function(response) {
-            console.log(3);
-        });
-    });
-    userInput.value = '';
-    e.preventDefault();
-});
+// userSubmit.addEventListener('submit', e => {
+//     // e.preventDefault();
+//     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+//         chrome.tabs.sendMessage(tabs[0].id, { greeting: preciseInput }, function(response) {
+//             console.log(3);
+//         });
+//     });
+//     userInput.value = '';
+//     e.preventDefault();
+// });
 
 userInput.addEventListener('submit', e => {
     e.preventDefault();
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { greeting: preciseInput }, function(response) {
-            console.log(3);
-        });
-    });
-    userInput.value = '';
+    // set a timer to send the value from our input field, set it to 1500ms so it doesn't fire constantly
+    let noTimerYet = true;
+    if (noTimerYet) {
+        noTimerYet = false;
+        setTimeout(() => {
+            if (userInput.value !== '') {
+                // send our input value over to
+                chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                    chrome.tabs.sendMessage(tabs[0].id, { greeting: preciseInput }, function(
+                        response
+                    ) {
+                        console.log(3);
+                    });
+                });
+                userInput.value = '';
+            }
+            noTimerYet = true;
+        }, 1500);
+    }
 });
