@@ -1,3 +1,7 @@
+// require('content.js', function() {
+//     console.log(arrayOfWords);
+// })
+
 const changeColor = document.getElementById('changeColor');
 
 // // grabs spans on the page
@@ -55,29 +59,43 @@ changeColor.onclick = function(element) {
 // grab input from user, and send to content.js
 // arrayOfWords.push(somethinggoeshere)
 
-const userSubmit = document.querySelector('#user-submit');
-// // console.log(userSubmit);
-// console.log('This is local storage:', localStorageTest);
+// const userSubmit = document.querySelector('#user-submit');
+// // // console.log(userSubmit);
+// // console.log('This is local storage:', localStorageTest);
 
-// console.log('this is testing ARRAY fro content.js', arrayofWords);
-// // console.log(3);
+// // console.log('this is testing ARRAY fro content.js', arrayofWords);
+// // // console.log(3);
 
-// // declare const to grab id of user-input
-const userInput = document.querySelector('#user-input').value;
+// // // declare const to grab id of user-input
+// const userInput = document.querySelector('#user-input').value;
 
-// // added event listener for when user clicks submits
-userSubmit.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert("hey");
-    arrayOfWords.push(userInput);
-    userInput.value = '';
-});
 
-userInput.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert("hey2");
-    arrayOfWords.push(userInput);
-    userInput.value = '';
-});
 
+// // // added event listener for when user clicks submits
+
+// function keyToDelete() {
+//     alert("successful traversal into function");
+//     userSubmit.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         alert("hey");
+//         arrayOfWords.push(userInput);
+//         userInput.value = '';
+//     });
+
+//     userInput.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         alert("hey2");
+//         arrayOfWords.push(userInput);
+//         userInput.value = '';
+//     });
+// }
+
+// console.log("IS REACHING TO FUNCTION");
+// const form = document.querySelector('form');
+// form.addEventListener('submit', function(e) {
+//     console.log(e)
+//     console.log('HELLLO');
+//     return false;
+// })
+// form.dispatchEvent(new Event('submit'));
 /**/
